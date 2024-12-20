@@ -46,8 +46,6 @@ async function checkWeather(city) {
 
     // Call AQI functions
     checkAQI(lat, lon);
-    checkUV(lat, lon);
-
     document.querySelector(".weather").style.display = "block";
     document.querySelector(".error").style.display = "none";
   }
