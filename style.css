@@ -5,6 +5,15 @@
   box-sizing: border-box;
 }
 
+.error {
+  margin-left: 5px;
+  background-color: whitesmoke;
+  padding: 5px;
+  width: fit-content;
+  border-radius: 15px;
+
+}
+
 body {
   background-color: #121212;
   color: #ffffff;
@@ -17,15 +26,38 @@ body {
   padding: 20px;
 }
 
-.card {
+
+.container {
+  display: flex;
+  gap: 4px;
+  /* Adds space between the card and extra-info */
+  align-items: stretch;
+  /* Ensures both elements are equal height */
+  justify-content: center;
+  /* Centers the elements horizontally */
+  flex-wrap: wrap;
+  /* Ensures responsiveness for smaller screens */
+  max-width: 1200px;
   width: 100%;
+  /* Full width to maintain consistenssscy */
+}
+
+.card {
+
+  flex: 1;
   max-width: 480px;
-  background: linear-gradient(135deg, #00feba, #5b548a);
+  background: linear-gradient(135deg, #ff6b6b, #6b548a);
   color: #fff;
   border-radius: 20px;
   padding: 40px 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 .search {
@@ -44,31 +76,34 @@ body {
   font-size: 18px;
   color: #333;
   background: #ebfffc;
-  border: 2px solid #00d6a4;
+  border: 2px solid #ff6b6b;
   border-radius: 30px;
   outline: none;
-  transition: border 0.3s ease;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search input:focus {
-  border-color: #008f6a;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 10px rgba(236, 88, 55, 0.5);
 }
 
 .search button {
+  gap: 10px;
   width: 60px;
   height: 60px;
-  background: #00d6a4;
-  border: none;
+  background: #f5ebeb;
+  border: #ff6b6b;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .search button:hover {
-  background: #008f6a;
+  background: #ff6b6b;
+  transform: scale(1.0);
 }
 
 .search button img {
@@ -119,19 +154,27 @@ body {
 }
 
 .extra-info {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  padding: 0 20px;
-  gap: 10px;
+  flex: 1;
+  max-width: 480px;
+  background: linear-gradient(135deg, #ff6b6b, #6b548a);
+  color: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extra-info:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 .extra-info .col {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  padding: 15px;
-  width: 45%;
-  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .extra-info .col img {
@@ -160,8 +203,14 @@ body {
 }
 
 @media (max-width: 768px) {
-  .card {
-    padding: 30px 20px;
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card,
+  .extra-info {
+    width: 100%;
   }
 
   .weather h1 {
@@ -173,7 +222,7 @@ body {
   }
 
   .details {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -182,7 +231,7 @@ body {
   }
 
   .extra-info {
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
   }
 
