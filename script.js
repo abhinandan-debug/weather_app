@@ -44,7 +44,7 @@ async function checkWeather(city) {
     const mapIframe = document.querySelector(".map-container iframe");
     mapIframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon - 0.1}%2C${lat - 0.1}%2C${lon + 0.1}%2C${lat + 0.1}&layer=mapnik`;
 
-    // Call AQI and UV functions
+    // Call AQI functions
     checkAQI(lat, lon);
     checkUV(lat, lon);
 
@@ -80,14 +80,6 @@ async function checkAQI(lat, lon) {
   }
 
   document.querySelector(".aqi").innerHTML = `AQI: ${aqi} (${aqiText})`;
-}
-
-async function checkUV(lat, lon) {
-  const response = await fetch(oneCallUrl + `lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily&appid=${apiKey}`);
-  const data = await response.json();
-  const uvIndex = data.current.uvi;
-
-  document.querySelector(".uv").innerHTML = `UV Index: ${uvIndex}`;
 }
 
 searchBtn.addEventListener("click", () => {
